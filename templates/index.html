@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            text-align: left;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .result-row:last-child {
+            border-bottom: none;
+        }
+        .result-title {
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form action="/" method="post">
+        <textarea name="text" placeholder="Enter your text here..."></textarea><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if analysis %}
+    <div class="result-container">
+        <div class="result-row">
+            <span class="result-title">Input Text:</span>
+            <span>{{ analysis.input }}</span>
+        </div>
+        <div class="result-row">
+            <span class="result-title">Sentiment:</span>
+            <span>{{ analysis.sentiment }}</span>
+        </div>
+        <div class="result-row">
+            <span class="result-title">Details:</span>
+            <span>{{ analysis.details }}</span>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
